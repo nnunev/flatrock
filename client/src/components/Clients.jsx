@@ -10,14 +10,15 @@ export default function Clients() {
   
   return (
 
-    <div>{!loading&&!error&& (
+    <>{!loading&&!error&& (
         <table className='table table-hover mt-5'>
             <thead>
                 <tr>
-                    <th> Name </th>
-                    <th> Email </th>
-                    <th> Phone </th>
                     <th></th>
+                    <th> USER </th>
+                    <th> ROLE </th>
+                    <th> STATUS </th>
+                    <th> ACTIONS</th>
                 </tr>
             </thead>
             <tbody>
@@ -26,7 +27,7 @@ export default function Clients() {
                 ))}
             </tbody>
         </table>
-    )}</div>
+    )}</>
   )
 }
 
