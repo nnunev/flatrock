@@ -24,19 +24,12 @@ export default function User() {
                 <p>{data.user.email}</p>
               </td>
               <td>{data.user.status}</td>
-              <td>{data.user.usergroup}</td>
-              <tr>
-                <td>
-                  <a className="btn btn-primary" href={`/`}> BACK</a>
-                    
-                    
-                  
-                </td>
-              </tr>
+              <td>{data.user.usergroup}</td> 
             </tr>
           </tbody>
-        </table>
+        </table> 
       )}
+      <a className="btn btn-primary" href={`/`}> BACK</a>
     </>
   );
 }

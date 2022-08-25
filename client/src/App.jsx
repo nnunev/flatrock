@@ -1,7 +1,6 @@
 //import './App.css';
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Header from "./components/Header";
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
@@ -13,11 +12,14 @@ const client = new ApolloClient({
 });
 
 function App() {
+  
+  
   return (
     
+
+
       <ApolloProvider client={client}>
         <Router>
-          <Header />
             <div className="container bg-light p-0 mb-4">
             <Routes>
               <Route path='/' element={<Home/>}/>
