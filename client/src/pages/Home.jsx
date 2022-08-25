@@ -1,11 +1,11 @@
-import Clients from "../components/Clients";
-import AddClientModal from "../components/AddClientModal";
+import Users from "../components/Users";
+import AddUserModal from "../components/AddUserModal";
 
 export default function Home() {
   return (
     <>
-        <AddClientModal />
-        <Clients />
+        <AddUserModal />
+        <Users />
     </>
   )
 }

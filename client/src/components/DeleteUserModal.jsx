@@ -1,12 +1,12 @@
 import { useMutation } from "@apollo/client";
-import { GET_CLIENTS } from "../queries/clientQueries";
+import { GET_USERS } from "../queries/userQueries";
 import { FaTrash } from "react-icons/fa";
-import { DELETE_CLIENT } from "../mutations/clientMutations";
+import { DELETE_USER } from "../mutations/userMutations";
 
-export default function DeleteClientModal({ client }) {
-  const [deleteClient] = useMutation(DELETE_CLIENT, {
-    variables: { id: client.id },
-    refetchQueries: [{ query: GET_CLIENTS }], //or update the cache
+export default function DeleteUserModal({ user }) {
+  const [deleteUser] = useMutation(DELETE_USER, {
+    variables: { id: user.id },
+    refetchQueries: [{ query: GET_USERS }], //or update the cache
   });
 
   return (
@@ -15,21 +15,21 @@ export default function DeleteClientModal({ client }) {
         type="button"
         className="btn btn-sm"
         data-bs-toggle="modal"
-        data-bs-target="#deleteClientModal"
+        data-bs-target="#deleteUserModal"
       >
         <FaTrash />
       </button>
 
       <div
         className="modal fade"
-        id="deleteClientModal"
-        aria-labelledby="deleteClientModalLabel"
+        id="deleteUserModal"
+        aria-labelledby="deleteUserModalLabel"
         aria-hidden="true"
       >
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title" id="deleteClientModalLabel">
+              <h5 className="modal-title" id="deleteUserModalLabel">
                 Delete User
               </h5>
               <button
@@ -40,9 +40,9 @@ export default function DeleteClientModal({ client }) {
               ></button>
             </div>
             <div className="modal-body">
-              <form onSubmit={deleteClient}>
+              <form onSubmit={deleteUser}>
                 <div className="mb-3">
-                  <p>{client.name}</p>
+                  <p>{user.name}</p>
                 </div>
 
                 <button

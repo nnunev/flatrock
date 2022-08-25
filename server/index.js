@@ -1,25 +1,25 @@
-const express = require('express') ;
-const cors = require('cors');
-const { graphql } = require('graphql');
+const express = require('express');
 const colors = require('colors');
+const cors = require('cors');
 require('dotenv').config();
-const port = process.env.PORT || 5000;
-const {graphqlHTTP} = require ('express-graphql');
-const connectDB = require('./config/db')
+const { graphqlHTTP } = require('express-graphql');
 const schema = require('./schema/schema');
+const connectDB = require('./config/db');
+const port = process.env.PORT || 5000;
+
 const app = express();
 
-connectDB()
+// Connect to database
+connectDB();
 
 app.use(cors());
 
 app.use(
-    '/graphql', 
-    graphqlHTTP({ 
-        schema: schema,
-        graphiql: process.env.NODE_ENV === 'development'
-}))
+  '/graphql',
+  graphqlHTTP({
+    schema,
+    graphiql: process.env.NODE_ENV === 'development',
+  })
+);
 
-
-
-app.listen(port, console.log(`server on ${port}`))
+app.listen(port, console.log(`Server running on port ${port}`));

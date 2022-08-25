@@ -1,10 +1,10 @@
 import { useQuery } from '@apollo/client'
-import ClientRow from './ClientRow'
-import { GET_CLIENTS } from '../queries/clientQueries'
+import UserRow from './UserRow'
+import { GET_USERS } from '../queries/userQueries'
 
 
-export default function Clients() {
-  const { loading, error, data } = useQuery(GET_CLIENTS)
+export default function Users() {
+  const { loading, error, data } = useQuery(GET_USERS)
   if (loading) return <p>Loading</p>
   if (loading) return <p>Something went wrong</p>
   
@@ -22,8 +22,8 @@ export default function Clients() {
                 </tr>
             </thead>
             <tbody>
-                {data.clients.map(client => (
-                    <ClientRow key={client.id} client={client} />
+                {data.users.map(user => (
+                    <UserRow key={user.id} user={user} />
                 ))}
             </tbody>
         </table>

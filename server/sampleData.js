@@ -1,7 +1,7 @@
 const projects = [
     {
       id: '1',
-      clientId: '1',
+      userId: '1',
       name: 'eCommerce Website',
       description:
         'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu.',
@@ -9,7 +9,7 @@ const projects = [
     },
     {
       id: '2',
-      clientId: '2',
+      userId: '2',
       name: 'Dating App',
       description:
         'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu.',
@@ -17,7 +17,7 @@ const projects = [
     },
     {
       id: '3',
-      clientId: '3',
+      userId: '3',
       name: 'SEO Project',
       description:
         'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu.',
@@ -25,7 +25,7 @@ const projects = [
     },
     {
       id: '4',
-      clientId: '4',
+      userId: '4',
       name: 'Design Prototype',
       description:
         'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu.',
@@ -33,7 +33,7 @@ const projects = [
     },
     {
       id: '5',
-      clientId: '5',
+      userId: '5',
       name: 'Auction Website',
       description:
         'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu.',
@@ -41,8 +41,8 @@ const projects = [
     },
   ];
   
-  // Clients
-  const clients = [
+  // Users
+  const users = [
     {
       id: '1',
       name: 'Tony Stark',
@@ -75,4 +75,4 @@ const projects = [
     },
   ];
   
-  module.exports = { projects, clients };
+  module.exports = { projects, users };
