@@ -1,5 +1,3 @@
-//import './App.css';
-
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
 import Home from "./pages/Home";
@@ -11,26 +9,19 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-function App() {
-  
-  
+function App() { 
   return (
-    
-
-
-      <ApolloProvider client={client}>
-        <Router>
-            <div className="container bg-light p-0 mb-4">
-            <Routes>
-              <Route path='/' element={<Home/>}/>
-              <Route path='/user/:id' element={<User />} />
-              <Route path='*' element={<NotFound/>}/>
-              
-            </Routes> 
-            </div>
-        </Router>  
-      </ApolloProvider>
-    
+    <ApolloProvider client={client}>
+      <Router>
+          <div className="container bg-light p-0 mb-4">
+          <Routes>
+            <Route path='/' element={<Home/>}/>
+            <Route path='/user/:id' element={<User />} />
+            <Route path='*' element={<NotFound/>}/>
+          </Routes> 
+          </div>
+      </Router>  
+    </ApolloProvider>
   );
 }
 

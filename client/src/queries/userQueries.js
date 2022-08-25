@@ -10,8 +10,7 @@ const GET_USERS = gql`
             status,
             usergroup, 
         }
-    }
-    
+    } 
 `;
 
 const GET_USER = gql`

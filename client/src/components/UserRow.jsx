@@ -2,7 +2,6 @@ import { FaUser, FaCog } from 'react-icons/fa'
 import DeleteUserModal from './DeleteUserModal';
 
 export default function UserRow({user}) {
-  
   return (
     <tr>
         <td><FaUser className='icon'/></td>
