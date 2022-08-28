@@ -23,10 +23,10 @@ const UserSchema = new mongoose.Schema({
         type: String,
         enum: ['User','Admin','Owner'] 
     },
-    // permisions:{
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: 'Permission',
-    // }
+    permissions:{
+        type: [mongoose.Schema.Types.ObjectId],
+        ref: 'Permission',
+    }
 })
 
 module.exports = mongoose.model('User', UserSchema);

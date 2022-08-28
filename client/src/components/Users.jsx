@@ -1,6 +1,6 @@
+import { GET_USERS } from '../queries/userQueries'
 import { useQuery } from '@apollo/client'
 import UserRow from './UserRow'
-import { GET_USERS } from '../queries/userQueries'
 
 export default function Users() {
   const { loading, error, data } = useQuery(GET_USERS)

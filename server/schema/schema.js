@@ -1,7 +1,7 @@
 
 const { GraphQLObjectType, GraphQLID, GraphQLString, GraphQLSchema, GraphQLList, GraphQLNonNull, GraphQLEnumType, GraphQLBoolean } = require('graphql');
 const User = require('../models/User')
-// const Permission = require('../models/Permission')
+const Permission = require('../models/Permission')
 
 //User Type
 const UserType = new GraphQLObjectType({
@@ -13,24 +13,23 @@ const UserType = new GraphQLObjectType({
     email: { type: GraphQLString },
     status: { type: GraphQLString },
     usergroup: { type: GraphQLString },
-    // permisions: {
-    //   type: PermisionType,
-    //   resolve(parent, args) {
-    //     return permisions.find(permision => permision.id === parent.permisionId)
-    //   }
-    // }
+    permissions: {
+      type: PermissionType,
+      resolve(parent, args) {
+        return Permission.find(permission => permission.id === parent.permissionId)
+      }
+    }
   })
 });
-//Permision Type
-// const PermisionType = new GraphQLObjectType({
-//   name: 'Permision',
-//   fields: () => ({
-//     id: { type: GraphQLID },
-//     name: { type: GraphQLString },
-//     description: { type: GraphQLString },
-//     status: { type: GraphQLString }
-//   })
-// });
+//Permission Type
+const PermissionType = new GraphQLObjectType({
+  name: 'Permission',
+  fields: () => ({
+    id: { type: GraphQLID },
+    name: { type: GraphQLString },
+    description: { type: GraphQLString },
+  })
+});
 
 const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
@@ -48,18 +47,20 @@ const RootQuery = new GraphQLObjectType({
         return User.findById(args.id);
       },
     },
-    // permissions: new GraphQLList(PermisionType),
-    // resolve(parent, args) {
-    //   return Permission.find();
-    // },
-    // permission: {
-    //   type: PermisionType,
-    //   args: { id: { type: GraphQLID } },
-    //   resolve(parent, args) {
-    //     return Permission.findById(args.id);
-    //   },
-    // },
-  },
+    permissions: {
+      type: new GraphQLList(PermissionType),
+      resolve(parent, args) {
+        return Permission.find();
+      }
+    },
+    permission: {
+      type: PermissionType,
+      args: { id: { type: GraphQLID } },
+      resolve(parent, args) {
+        return Permission.findById(args.id);
+      },
+    },
+  }
 });
 
 // Mutations
@@ -75,7 +76,7 @@ const mutation = new GraphQLObjectType({
         email: { type: new GraphQLNonNull(GraphQLString) },
         status: { type: new GraphQLNonNull(GraphQLString), defaultValue: 'y' },
         usergroup: { type: new GraphQLNonNull(GraphQLString), defaultValue: 'User' },
-        //permisions: { type: new GraphQLNonNull(GraphQLID) }
+      //  permissions: { type: new GraphQLNonNull(GraphQLID) }
       },
       resolve(parent, args) {
         const user = new User({
@@ -84,7 +85,7 @@ const mutation = new GraphQLObjectType({
           email: args.email,
           status: args.status,
           usergroup: args.usergroup,
-          //permisions: args.permisions
+          //permissions: args.permissions
         });
         return user.save();
       },
@@ -99,24 +100,22 @@ const mutation = new GraphQLObjectType({
         return User.findByIdAndRemove(args.id);
       },
     },
-    // Add a permission
-    // addPermission: {
-    //   type: Permission,
-    //   args: {
-    //     name: { type: new GraphQLNonNull(GraphQLString) },
-    //     describtion: { type: new GraphQLNonNull(GraphQLString) },
-    //     status: { type: new GraphQLNonNull(GraphQLBoolean) },
-    //   },
-    //   resolve(parent, args) {
-    //     const permission = new Permission({
-    //       name: args.name,
-    //       describtion: args.describtion,
-    //       status: args.status,
-    //     });
-    //     return permission.save();
-    //   },
-    // },
-  },
+   
+    addPermission: {
+      type: PermissionType,
+      args: {
+        name: { type: new GraphQLNonNull(GraphQLString) },
+        description: { type: GraphQLString },
+      },
+      resolve(parent, args) {
+        const permission = new Permission({
+          name: args.name,
+          description: args.description,
+        });
+        return permission.save();
+      },
+    },
+  }
 });
 
 module.exports = new GraphQLSchema({
